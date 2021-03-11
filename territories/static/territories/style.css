@@ -1,0 +1,91 @@
+.list-root {
+    max-width: 500px;
+}
+
+.territory-list {
+    list-style: none;
+}
+
+div > .territory-list {
+    padding: 0;
+}
+
+.territory-line {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.territory-line:hover {
+    background-color: whitesmoke;
+}
+
+.territory-name {
+    height: 35px;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.territory-name-icon {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 20px;
+}
+
+.territory-name-icon-clickable {
+    cursor: pointer;
+}
+
+.territory-code {
+    color: grey;
+    display: inline-block;
+    user-select: none;
+    cursor: pointer;
+    padding-left: 35px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.territory-code-copied {
+    color: green;
+}
+
+.territory-list-marker {
+    width: 15px;
+}
+
+.just-padding {
+  padding: 15px;
+}
+
+.list-group.list-group-root {
+  padding: 0;
+  overflow: hidden;
+}
+
+.list-group.list-group-root .list-group {
+  margin-bottom: 0;
+}
+
+.list-group.list-group-root .list-group-item {
+  border-radius: 0;
+  border-width: 1px 0 0 0;
+}
+
+.list-group.list-group-root > .list-group-item:first-child {
+  border-top-width: 0;
+}
+
+.list-group.list-group-root > .list-group > .list-group-item {
+  padding-left: 30px;
+}
+
+.list-group.list-group-root > .list-group > .list-group > .list-group-item {
+  padding-left: 45px;
+}
