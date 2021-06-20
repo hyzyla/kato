@@ -1,4 +1,7 @@
+from __future__ import annotations
+
 import enum
+from typing import List, Optional
 
 from django.db import models
 
@@ -34,3 +37,44 @@ class Territory(models.Model):
 
     def __str__(self):
         return f'{self.code} - {self.name}'
+
+    @staticmethod
+    def get(code: str) -> Territory:
+        return Territory.objects.get(code=code)
+
+    @staticmethod
+    def get_ancestors(code: Optional[str]) -> List[Territory]:
+        if not code:
+            return []
+
+        territory = Territory.objects.filter(code=code).first()
+
+        territories: List[Territory] = []
+        while territory:
+            territories.append(territory)
+            territory = territory.parent
+        return list(reversed(territories))
+
+    @staticmethod
+    def get_children(code: str) -> List[Territory]:
+        return Territory.objects.filter(parent__code=code).all()
+
+    @staticmethod
+    def get_roots() -> List[Territory]:
+        return Territory.objects.filter(level__exact=1).all()
+
+    @staticmethod
+    def get_by_search(query: Optional[str]) -> List[Territory]:
+        if not query:
+            return []
+        territories = (
+            Territory
+            .objects
+            .filter(
+                models.Q(name__search=query) |
+                models.Q(name__icontains=query) |
+                models.Q(code__icontains=query)
+            )
+            .all()
+        )
+        return sorted(territories, key=lambda t: len(t.name))

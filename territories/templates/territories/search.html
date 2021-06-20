@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2 class="fw-bold">Результати пошуку</h2>
+  <div class="list-group mt-4">
+    {% if territories %}
+      {% for territory in territories %}
+        <a class="list-group-item" href="{% url 'territory' territory.code %}">{{ territory.name }}</a>
+      {% endfor %}
+    {% elif not request.GET.q %}
+      Введіть пошуковий запит у рядок вище
+    {% else %}
+      Нічого не знайдено за вашим запитом...
+    {% endif %}
+  </div>
+
+{% endblock %}

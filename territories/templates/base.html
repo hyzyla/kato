@@ -3,57 +3,46 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="//fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
   {% load static %}
-  <title>{% block title %}My amazing site{% endblock %}</title>
+  <title>{% block title %}Довідник КАТОТТГ{% endblock %}</title>
   <link rel="stylesheet" href="{% static 'territories/style.css' %}">
+  {% block styles %}
+  {% endblock %}
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 </head>
 
 <body>
-<div id="content">
-  <div class="just-padding">
-
-    <div class="list-group list-group-root well">
-
-      <div class="list-group-item">Item 1</div>
-      <div class="list-group">
-
-        <div class="list-group-item">Item 1.1</div>
-        <div class="list-group">
-          <div class="list-group-item">Item 1.1.1</div>
-          <div class="list-group-item">Item 1.1.2</div>
-          <div class="list-group-item">Item 1.1.3</div>
-        </div>
-
-        <a href="#" class="list-group-item">Item 1.2</a>
-        <div class="list-group">
-          <a href="#" class="list-group-item">Item 1.2.1</a>
-          <a href="#" class="list-group-item">Item 1.2.2</a>
-          <a href="#" class="list-group-item">Item 1.2.3</a>
-        </div>
-
-      </div>
-
-      <a href="#" class="list-group-item">Item 2</a>
-      <div class="list-group">
-
-        <a href="#" class="list-group-item">Item 2.1</a>
-        <div class="list-group">
-          <a href="#" class="list-group-item">Item 2.1.1</a>
-          <a href="#" class="list-group-item">Item 2.1.2</a>
-          <a href="#" class="list-group-item">Item 2.1.3</a>
-        </div>
-
-      </div>
-
+<header>
+  <div class="navbar navbar-dark bg-dark shadow-sm">
+    <div class="container">
+      <a href="{% url 'territories' %}" class="navbar-brand d-flex align-items-center">
+        <i class="bi bi-map me-3 logo"></i>
+        <strong>Довідник КАТОТТГ</strong>
+      </a>
     </div>
-
   </div>
+</header>
+<main class="container pt-4">
+  <form class="w-100 mb-4 input-group" action="{% url 'territories-search' %}">
+    <input
+        type="search"
+        class="form-control"
+        placeholder="Введіть назву чи код..."
+        aria-label="Пошук"
+        name="q"
+        value="{{ request.GET.q }}"
+    >
+    <button class="btn btn-outline-secondary" type="submit">Пошук</button>
+  </form>
   {% block content %}{% endblock %}
-</div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-<script src="{% static 'territories/app.js' %}"></script>
+  <hr/>
+  <p class="mt-4 text-muted">
+    <b>КАТОТТГ</b> - кодифікатор адміністративно-територіальних одиниць та територій територіальних громад, національний
+    реєстр адміністративно-територіальних одиниць та територій територіальних громад України, введений 26 листопада 2020
+    року наказом Міністерства розвитку громад та територій України (Мінрегіону).
+  </p>
+</main>
 </body>
 </html>

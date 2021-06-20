@@ -8,9 +8,23 @@ from territories.serializers import TerritorySerializer
 
 
 def index(request):
-    territories = Territory.objects.filter(level__exact=1).all()
+    territories = Territory.get_roots()
     context = {'territories': territories}
     return render(request, 'territories/index.html', context)
+
+
+def search(request):
+    query = request.GET.get('q')
+    territories = Territory.get_by_search(query=query)
+    context = {'territories': territories}
+    return render(request, 'territories/search.html', context)
+
+
+def details(request, code: str):
+    territory = Territory.get(code=code)
+    children = Territory.get_children(code=code)
+    context = {'territory': territory, 'children': children, 'parent': territory.parent}
+    return render(request, 'territories/details.html', context)
 
 
 class TerritoryViewSet(viewsets.ReadOnlyModelViewSet):
