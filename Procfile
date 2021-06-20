@@ -1,0 +1,1 @@
+web: gunicorn kato.wsgi --log-file -
