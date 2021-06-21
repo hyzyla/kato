@@ -6,7 +6,7 @@
     {% if territories %}
       {% for territory in territories %}
         <a class="list-group-item" href="{% url 'territory' territory.code %}">
-          {{ territory.name }} - {{ territory.get_category_display }}
+          {{ territory.name }} <span class="text-muted">{{ territory.parent.name }}</span>
         </a>
       {% endfor %}
     {% elif not request.GET.q %}
