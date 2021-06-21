@@ -5,7 +5,9 @@
   <div class="list-group mt-4">
     {% if territories %}
       {% for territory in territories %}
-        <a class="list-group-item" href="{% url 'territory' territory.code %}">{{ territory.name }}</a>
+        <a class="list-group-item" href="{% url 'territory' territory.code %}">
+          {{ territory.name }} - {{ territory.get_category_display }}
+        </a>
       {% endfor %}
     {% elif not request.GET.q %}
       Введіть пошуковий запит у рядок вище

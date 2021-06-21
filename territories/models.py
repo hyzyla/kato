@@ -77,4 +77,4 @@ class Territory(models.Model):
             )
             .all()
         )
-        return sorted(territories, key=lambda t: len(t.name))
+        return sorted(territories, key=lambda t: (len(t.name), t.level))
