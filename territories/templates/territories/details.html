@@ -35,8 +35,8 @@
     <h5 class="mt-5">Територальні одиниці:</h5>
     <div>
       <div class="list-group list-group-root well">
-        {% for children in children %}
-          <a class="list-group-item" href="{% url 'territory' children.code %}">{{ children.name }}</a>
+        {% for child in children %}
+          <a class="list-group-item" href="{% url 'territory' child.code %}">{{ child.name }}</a>
         {% endfor %}
       </div>
     </div>
