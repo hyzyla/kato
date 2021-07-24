@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import viewsets
+from rest_framework import viewsets, exceptions
+from rest_framework.negotiation import DefaultContentNegotiation
 
 from territories.filters import TerritoryViewSetFilter
 from territories.models import Territory
+from territories.permissions import HasAPIKeyJSON
 from territories.serializers import TerritorySerializer
 
 
@@ -28,11 +30,8 @@ def details(request, code: str):
 
 
 class TerritoryViewSet(viewsets.ReadOnlyModelViewSet):
+    permission_classes = [HasAPIKeyJSON]
     queryset = Territory.objects.order_by('code').all()
     serializer_class = TerritorySerializer
     filter_backends = [DjangoFilterBackend]
     filterset_class = TerritoryViewSetFilter
-
-    def get_queryset(self):
-        queryset = self.queryset
-        return queryset

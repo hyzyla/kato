@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sitemaps',
     'rest_framework',
+    'rest_framework_api_key',
     'django_filters',
     'django.contrib.postgres',
 ]
@@ -133,8 +134,10 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
-    'PAGE_SIZE': 200
+    'PAGE_SIZE': 200,
 }
+
+API_KEY_CUSTOM_HEADER = "HTTP_AUTHORIZATION"
 
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
