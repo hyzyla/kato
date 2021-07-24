@@ -1,5 +1,14 @@
 {% extends "rest_framework/base.html" %}
 
+
+{% block meta %}
+  <meta name="robots" content="nofollow"/>
+{% endblock %}
+
+{% block title %}
+  API КАТОТТГ - dovidnyk.org.ua
+{% endblock %}
+
 {% block branding %}
   <a class='navbar-brand' rel="nofollow" href="{% url 'territory-list' %}">
     Довідник КАТОТТГ — dovidnyk.org.ua
@@ -17,7 +26,8 @@
   <p>Для доступу до API потрібно використовувати токен доступу в
     заголовку <b>Authorization</b>. Для отримання токену доступу напишіть мені на електронну пошту
     <nobr><a href="mailto:hyzyla@gmail.com">hyzyla@gmail.com</a></nobr>
-    або в Telegram <nobr><a href="https://t.me/hyzyla">https://t.me/hyzyla</a></nobr>
+    або в Telegram
+    <nobr><a href="https://t.me/hyzyla">https://t.me/hyzyla</a></nobr>
   </p>
 
   <p><b>Фільтри:</b></p>
@@ -31,7 +41,7 @@
     <li>page_size — кількість територіальних одиниць на одну сторінку. Максимальна кількість: 100</li>
   </ul>
   <p><b>Ціна:</b></p>
-    <ul>
+  <ul>
     <li>10$ — для отримання доступу на один місяць</li>
     <li>100$ — для отримання доступу на один рік</li>
     <li>???$ — можна домовитися про іншу ціну</li>

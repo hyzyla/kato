@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets
-from rest_framework.renderers import BrowsableAPIRenderer, JSONRenderer, JSONOpenAPIRenderer, OpenAPIRenderer
+from rest_framework.renderers import BrowsableAPIRenderer, JSONRenderer
 
 from territories.filters import TerritoryViewSetFilter
 from territories.models import Territory
