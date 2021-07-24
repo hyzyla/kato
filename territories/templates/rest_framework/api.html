@@ -1,8 +1,39 @@
 {% extends "rest_framework/base.html" %}
 
 {% block branding %}
-{#  <a class='navbar-brand' rel="nofollow" href="{% url 'api-root' %}">#}
-  <a class='navbar-brand' rel="nofollow" href="">
+  <a class='navbar-brand' rel="nofollow" href="{% url 'territory-list' %}">
     Довідник КАТОТТГ — dovidnyk.org.ua
   </a>
+{% endblock %}
+
+{% block description %}
+  <p>
+    API для отримання списку територій КАТОТТГ - Кодифікатор адміністративно-територіальних одиниць та територій
+    територіальних громад.
+  </p>
+  <p>
+
+  </p>
+  <p>Для доступу до API потрібно використовувати токен доступу в
+    заголовку <b>Authorization</b>. Для отримання токену доступу напишіть мені на електронну пошту
+    <nobr><a href="mailto:hyzyla@gmail.com">hyzyla@gmail.com</a></nobr>
+    або в Telegram <nobr><a href="https://t.me/hyzyla">https://t.me/hyzyla</a></nobr>
+  </p>
+
+  <p><b>Фільтри:</b></p>
+  <ul>
+    <li>code — код КАТОТТГ</li>
+    <li>name — назва територіальної одиниці</li>
+    <li>level — рівень територіальної одиниці. 1 - найменший рівень</li>
+    <li>parent — код територіальної одиниці верхнього рівня</li>
+    <li>category — категорія</li>
+    <li>page — номер сторінки</li>
+    <li>page_size — кількість територіальних одиниць на одну сторінку. Максимальна кількість: 100</li>
+  </ul>
+  <p><b>Ціна:</b></p>
+    <ul>
+    <li>10$ — для отримання доступу на один місяць</li>
+    <li>100$ — для отримання доступу на один рік</li>
+    <li>???$ — можна домовитися про іншу ціну</li>
+  </ul>
 {% endblock %}

@@ -127,14 +127,6 @@ STATIC_URL = '/static/'
 
 
 REST_FRAMEWORK = {
-    # Use Django's standard `django.contrib.auth` permissions,
-    # or allow read-only access for unauthenticated users.
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ],
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
-    'PAGE_SIZE': 200,
 }
 
 API_KEY_CUSTOM_HEADER = "HTTP_AUTHORIZATION"
@@ -154,7 +146,7 @@ LOGGING = {
     'loggers': {
         'django': {
             'handlers': ['console'],
-             'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
         },
     },
 }

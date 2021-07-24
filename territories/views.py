@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import viewsets, exceptions
-from rest_framework.negotiation import DefaultContentNegotiation
+from rest_framework import viewsets
+from rest_framework.renderers import BrowsableAPIRenderer, JSONRenderer, JSONOpenAPIRenderer, OpenAPIRenderer
 
 from territories.filters import TerritoryViewSetFilter
 from territories.models import Territory
-from territories.permissions import HasAPIKeyJSON
+from territories.pagination import TerritoryPagination
+from territories.permission import TerritoryAPIPermission
 from territories.serializers import TerritorySerializer
 
 
@@ -30,8 +31,11 @@ def details(request, code: str):
 
 
 class TerritoryViewSet(viewsets.ReadOnlyModelViewSet):
-    permission_classes = [HasAPIKeyJSON]
+    renderer_classes = [JSONRenderer, BrowsableAPIRenderer]
+    permission_classes = [TerritoryAPIPermission]
+    authentication_classes = []
     queryset = Territory.objects.order_by('code').all()
     serializer_class = TerritorySerializer
     filter_backends = [DjangoFilterBackend]
     filterset_class = TerritoryViewSetFilter
+    pagination_class = TerritoryPagination

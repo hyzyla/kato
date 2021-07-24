@@ -4,7 +4,11 @@ from rest_framework.views import APIView
 from rest_framework_api_key.permissions import HasAPIKey
 
 
-class HasAPIKeyJSON(HasAPIKey):
+class TerritoryAPIPermission(HasAPIKey):
+    message = (
+        'Відмовлено у доступі до API. Для отримання доступу напишіть мені '
+        'на електронну пошту hyzyla@gmail.com чи в телеграм https://t.me/hyzyla'
+    )
 
     def has_permission(self, request: HttpRequest, view: APIView) -> bool:
 
