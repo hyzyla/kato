@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets
@@ -14,6 +15,10 @@ def index(request):
     territories = Territory.get_roots()
     context = {'territories': territories}
     return render(request, 'territories/index.html', context)
+
+
+def ads(request):
+    return HttpResponse('google.com, pub-4422566096376436, DIRECT, f08c47fec0942fa0')
 
 
 def search(request):

@@ -14,9 +14,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
 from django.contrib.sitemaps.views import sitemap
+from django.urls import path, include
 
+from territories import views as territories_view
 from territories.sitemap import TerritorySitemap, TerritoriesSitemap
 
 sitemaps = {
@@ -33,5 +34,6 @@ urlpatterns = [
         sitemap,
         {'sitemaps': sitemaps},
         name='django.contrib.sitemaps.views.sitemap'
-    )
+    ),
+    path('ads.txt', territories_view.ads, name='ads.txt'),
 ]
